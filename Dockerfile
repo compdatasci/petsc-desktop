@@ -1,4 +1,4 @@
-# Builds a Docker image for PETSc
+# Builds a Docker image for PETSc and SLEPC
 #
 # Authors:
 # Xiangmin Jiao <xmjiao@gmail.com>
@@ -38,12 +38,14 @@ RUN apt-get update && \
         libptscotch-dev \
         libmumps-dev \
         \
-        libpetsc3.7.6-dev && \
+        libpetsc3.7.6-dev \
+        libslepc3.7-dev && \
     apt-get clean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV PETSC_DIR=/usr/lib/petsc
+ENV SLEPC_DIR=/usr/lib/slepc
 
 ########################################################
 # Customization for user
