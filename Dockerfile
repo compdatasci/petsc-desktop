@@ -43,7 +43,7 @@ RUN apt-get update && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV PETSC_DIR=/usr/lib/petscdir/3.7.6/x86_64-linux-gnu-real
+ENV PETSC_DIR=/usr/lib/petsc
 
 ########################################################
 # Customization for user
