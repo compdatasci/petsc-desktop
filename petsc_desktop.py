@@ -30,9 +30,9 @@ def parse_args(description):
                         default="compdatasci/" + APP + "-desktop")
 
     parser.add_argument('-t', '--tag',
-                        help='Tag of the image. The default is latest. ' +
+                        help='Tag of the image. The default is artful. ' +
                         'If the image already has a tag, its tag prevails.',
-                        default="latest")
+                        default="artful")
 
     parser.add_argument('-v', '--volume',
                         help='A data volume to be mounted to ~/project.',
