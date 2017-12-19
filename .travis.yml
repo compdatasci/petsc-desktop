@@ -5,16 +5,7 @@ language: python
 services: docker
 
 env:
-  - XVFB=1
-  - XVFB=0
-
-before_install:
-  # Start up xvfb
-  - '[[ "$XVFB" != "1" ]] || /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid
-     --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16'
-
-before_script:
-  - '[[ "$XVFB" != "1" ]] || export DISPLAY=:99.0 && sh -e /etc/init.d/xvfb start'
+  - PETSC_VERSION=2.3.2
 
 script:
   - docker --version
@@ -22,11 +13,8 @@ script:
   # Build only if the commit range of a push contains Dockerfile or .travis.yml
   - '[[ "$TRAVIS_EVENT_TYPE" == "push" && -n "$TRAVIS_COMMIT_RANGE" &&
         -z "$(git diff --name-only $TRAVIS_COMMIT_RANGE |
-            grep -e Dockerfile -e .travis.yml)" ]] || [[ "$XVFB" != "1" ]] ||
-     (docker build --tag compdatasci/petsc-desktop:3.7.6
-                   --tag compdatasci/petsc-desktop:latest . &&
+            grep -e Dockerfile -e .travis.yml)" ]] ||
+     (docker build --tag compdatasci/petsc-desktop:$PETSC_VERSION . &&
       docker push compdatasci/petsc-desktop &&
       touch success)'
-  # Test script without launching webbrowser and push new image if successful
-  - './petsc_desktop.py -d -n && docker stop $(docker ps -q)'
   - docker images
