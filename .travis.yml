@@ -7,5 +7,4 @@ before_script:
 
 script:
   - './ci-util/build-docker.sh : :latest,3.7.6 &&
-     ./petsc_desktop.py -d -n && docker stop $(docker ps -q) &&
      ./ci-util/trigger-via-api.sh'
