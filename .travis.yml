@@ -1,20 +1,11 @@
 os: linux
-dist: trusty
-sudo: required
 language: python
 services: docker
 
-env:
-  - PETSC_VERSION=2.3.2
+before_script:
+  - git clone --depth=1 https://$GIT_TOKEN@github.com/xmjiao/ci-util.git 2> /dev/null
 
 script:
-  - docker --version
-  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_USERPASS"
-  # Build only if the commit range of a push contains Dockerfile or .travis.yml
-  - '[[ "$TRAVIS_EVENT_TYPE" == "push" && -n "$TRAVIS_COMMIT_RANGE" &&
-        -z "$(git diff --name-only $TRAVIS_COMMIT_RANGE |
-            grep -e Dockerfile -e .travis.yml)" ]] ||
-     (docker build --tag compdatasci/petsc-desktop:$PETSC_VERSION . &&
-      docker push compdatasci/petsc-desktop &&
-      touch success)'
-  - docker images
+  - './ci-util/build-docker.sh : :latest,3.7.6 &&
+     ./petsc_desktop.py -d -n && docker stop $(docker ps -q) &&
+     ./ci-util/trigger-via-api.sh'
