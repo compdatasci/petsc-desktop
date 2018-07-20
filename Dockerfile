@@ -42,7 +42,9 @@ RUN apt-get update && \
         libmumps-dev \
         \
         libpetsc${PETSC_VERSION}-dev \
-        libslepc${SLEPC_VERSION}-dev && \
+        libslepc${SLEPC_VERSION}-dev \
+        python3-petsc4py \
+        python3-slepc4py && \
     apt-get clean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
