@@ -32,7 +32,7 @@ RUN apt-get update && \
         libopenblas-base \
         libopenblas-dev \
         \
-        openmpi2-bin libopenmpi2 libopenmpi2-dev \
+        openmpi-bin libopenmpi2 libopenmpi-dev \
         libscalapack-openmpi2.0 \
         libsuperlu-dev \
         libsuitesparse-dev \
