@@ -9,7 +9,7 @@ LABEL maintainer "Xiangmin Jiao <xmjiao@gmail.com>"
 USER root
 WORKDIR /tmp
 
-ENV PETSC_VERSION=3.7.6
+ENV PETSC_VERSION=3.7.7
 ENV SLEPC_VERSION=3.7.4
 
 # Install system packages
@@ -32,12 +32,11 @@ RUN apt-get update && \
         libopenblas-base \
         libopenblas-dev \
         \
-        openmpi-bin libopenmpi-dev \
-        libscalapack-openmpi1 libscalapack-mpi-dev \
+        openmpi-bin libopenmpi2 libopenmpi-dev \
+        libscalapack-openmpi2.0 \
         libsuperlu-dev \
         libsuitesparse-dev \
         libhypre-dev \
-        libblacs-openmpi1 libblacs-mpi-dev \
         libptscotch-dev \
         libmumps-dev \
         \
