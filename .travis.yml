@@ -6,7 +6,7 @@ before_script:
   - git clone --depth=1 https://$GIT_TOKEN@github.com/xmjiao/ci-util.git
 
 script:
-  - './ci-util/build-docker.sh : :$TRAVIS_BRANCH,latest,3.7.6 &&
+  - './ci-util/build-docker.sh : :$TRAVIS_BRANCH,latest,3.7.7 &&
      ./petsc_desktop.py -t $TRAVIS_BRANCH -d -n -V && docker stop $(docker ps -q)'
 
 after_success:
