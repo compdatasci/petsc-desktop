@@ -3,15 +3,15 @@
 # Authors:
 # Xiangmin Jiao <xmjiao@gmail.com>
 
-FROM x11vnc/desktop:18.04
+FROM x11vnc/desktop:20.04
 LABEL maintainer "Xiangmin Jiao <xmjiao@gmail.com>"
 
 USER root
 WORKDIR /tmp
 
 ENV OPENMPI_VERSION=2.1.1
-ENV PETSC_VERSION=3.7.7
-ENV SLEPC_VERSION=3.7.4
+ENV PETSC_VERSION=3.12.4
+ENV SLEPC_VERSION=3.12.2
 
 
 # Install system packages and compile OpenMPI2 for InfiniBand support
