@@ -34,7 +34,7 @@ RUN apt-get update && \
         libopenblas-dev \
         \
         openmpi-bin libopenmpi3 libopenmpi-dev \
-        libscalapack-openmpi2.0 \
+        libscalapack-openmpi2.1 \
         libsuperlu-dev \
         libsuitesparse-dev \
         libhypre-dev \
