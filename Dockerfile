@@ -10,8 +10,8 @@ USER root
 WORKDIR /tmp
 
 ENV OPENMPI_VERSION=2.1.1
-ENV PETSC_VERSION=3.12.4
-ENV SLEPC_VERSION=3.12.2
+ENV PETSC_VERSION=3.12
+ENV SLEPC_VERSION=3.12
 
 
 # Install system packages and compile OpenMPI2 for InfiniBand support
